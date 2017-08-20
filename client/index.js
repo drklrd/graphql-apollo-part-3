@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ApolloClient from 'apollo-client';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { Router,Route,hashHistory,IndexRoute } from 'react-router';
 
 import App from './components/App';
 
+const networkInterface = createNetworkInterface({
+    uri : '/graphql',
+    opts : {
+        credentials : 'same-origin' // this is what tells to send cookies to the backend server
+    }
+});
+
 const client = new ApolloClient({
-    dataIdFromObject : o => o.id // very ideal in case of MONGO DB since every record will be having unique ID globally as well
+    networkInterface,
+    dataIdFromObject : o => o.id    // very ideal in case of MONGO DB since every record will be having unique ID globally as well,
+                                    // create custom network interface, to make sure : send the cookies also. Send the Cookies too
 });
 
 const Root = () => {
