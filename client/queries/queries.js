@@ -17,3 +17,13 @@ export const Logout = gql`
         }
     }
 `;
+
+export const Login = gql`
+
+    mutation Login($email : String, $password: String){
+        login(email : $email, password : $password){
+            id
+            email
+        }
+    }
+`;
