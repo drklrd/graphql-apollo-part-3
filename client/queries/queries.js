@@ -8,3 +8,12 @@ export const CurrentUser =  gql`
         }
     }
 `;
+
+export const Logout = gql`
+    mutation {
+        logout{
+            id
+            email
+        }
+    }
+`;
