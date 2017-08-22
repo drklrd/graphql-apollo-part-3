@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AuthForm from './AuthForm';
 import { Login, CurrentUser } from '../queries/queries';
 import { graphql } from 'react-apollo';
+import { hashHistory } from 'react-router';
 
 class LoginForm extends Component{
 
@@ -11,6 +12,15 @@ class LoginForm extends Component{
         this.state = {
             errors : []
         };
+    }
+
+    componnentWillUpdate(nextProps){
+        // this.props // the old , current set of props
+        // nextProps // the next set of props that will be in place when the component rerenders
+        if(!this.props.data.user && nextProps.data.user){
+            // redirect to dashboard !!!
+            hashHistory.push('/dashboard');
+        }
     }
 
     onSubmit({ email, password }){
@@ -39,4 +49,6 @@ class LoginForm extends Component{
     }
 }
 
-export default graphql(Login)(LoginForm);
+export default graphql(CurrentUser)(
+graphql(Login)(LoginForm)
+);
