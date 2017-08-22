@@ -50,5 +50,5 @@ class LoginForm extends Component{
 }
 
 export default graphql(CurrentUser)(
-graphql(Login)(LoginForm)
+    graphql(Login)(LoginForm)
 );
