@@ -14,7 +14,7 @@ class SignupForm extends Component{
         };
     }
 
-    componnentWillUpdate(nextProps){
+    componentWillUpdate(nextProps){
 
         if(nextProps.data.user && !this.props.data.user){
             // redirect to dashboard !!!

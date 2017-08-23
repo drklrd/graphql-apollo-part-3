@@ -14,7 +14,7 @@ class LoginForm extends Component{
         };
     }
 
-    componnentWillUpdate(nextProps){
+    componentWillUpdate(nextProps){
         // this.props // the old , current set of props
         // nextProps // the next set of props that will be in place when the component rerenders
         if(!this.props.data.user && nextProps.data.user){
